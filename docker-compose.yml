@@ -1,7 +1,6 @@
 version: '3.9'
 services:
   db:
-    build: ./my-golang/sql
     image: registry.digitalocean.com/smm2/db-product-1.0
     container_name: db-product
     volumes:
@@ -11,7 +10,6 @@ services:
     networks:
       - product-net
   api:
-    build: ./my-golang
     image: registry.digitalocean.com/smm2/be-product-1.0
     container_name: be-product
     depends_on:
@@ -28,7 +26,6 @@ services:
     networks:
       - product-net
   web:
-    build: ./my-react
     image: registry.digitalocean.com/smm2/be-product-1.0
     container_name: fe-product
     environment:
