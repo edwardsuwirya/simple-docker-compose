@@ -5,7 +5,7 @@ services:
     container_name: db-product
     volumes:
       - /data:/var/lib/postgresql/data
-    expose:
+    ports:
       - "${DB_PORT}"
     networks:
       - product-net
@@ -21,7 +21,7 @@ services:
       - DB_USER=${DB_USER}
       - DB_NAME=${DB_NAME}
       - DB_PASSWORD=${DB_PASSWORD}
-    expose:
+    ports:
       - "${API_PORT}:${API_PORT}"
     networks:
       - product-net
