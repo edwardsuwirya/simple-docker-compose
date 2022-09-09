@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   db:
-    image: registry.digitalocean.com/smm2/db-product-1.0
+    image: "registry.digitalocean.com/smm2/db-product:${DB_IMAGE_VERSION}"
     container_name: db-product
     volumes:
       - /data:/var/lib/postgresql/data
@@ -10,7 +10,7 @@ services:
     networks:
       - product-net
   api:
-    image: registry.digitalocean.com/smm2/be-product-1.0
+    image: "registry.digitalocean.com/smm2/be-product:${BE_IMAGE_VERSION}"
     container_name: be-product
     depends_on:
       - db
@@ -26,7 +26,7 @@ services:
     networks:
       - product-net
   web:
-    image: registry.digitalocean.com/smm2/fe-product-1.0
+    image: "registry.digitalocean.com/smm2/fe-product:${FE_IMAGE_VERSION}"
     container_name: fe-product
     environment:
       - API_PORT=${API_PORT}
